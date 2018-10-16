@@ -1,0 +1,49 @@
+{% extends 'login.html' %}
+{% block Content-login %}
+     <p class="text-center login-logo" >Register</p>
+    <label id="error_message">{{ error_message }}</label>
+     {% for message in messages %}
+        {% if message.tags == "error" %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {% else %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+    <form  method="post">
+        {% csrf_token %}
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Username" name="username" value="{{ username }}"required>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+        <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Retyping Password" name="re_password" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+        <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Full Name" name="full_name" value="{{ full_name }}"required>
+        <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+             <a  href="{% url 'login' %}" class="btn btn-primary btn-block btn-flat">Back</a>
+
+        </div>
+          <div class="col-xs-4">
+
+
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button id= "btn"type="submit"  class="btn btn-primary btn-block btn-flat">Register</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+    <script>
+
+    </script>
+{% endblock %}

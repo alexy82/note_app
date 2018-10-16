@@ -1,0 +1,54 @@
+
+.grid-note {
+ transition: all ease 1s;
+    -moz-transition: all ease 1s;
+    -webkit-transition: all ease 1s;
+	-webkit-column-count:1;
+	-webkit-column-gap:10px;
+	-webkit-column-fill:auto;
+	-moz-column-count:1;
+	-moz-column-gap:10px;
+	-moz-column-fill:auto;
+	column-count:1;
+	column-gap:15px;
+	column-fill:auto;
+
+}
+
+.grid-item {
+
+
+
+	-webkit-column-break-inside:avoid;
+	-moz-column-break-inside:avoid;
+	column-break-inside:avoid;
+}
+
+
+
+
+
+
+@media (min-width: 450px) {
+  .grid-note {
+    -webkit-column-count:2;
+	  -moz-column-count:2;
+	  column-count:2;
+  }
+}
+
+@media (min-width: 650px) {
+  .grid-note {
+    -webkit-column-count:3;
+	  -moz-column-count:3;
+	  column-count:3;
+  }
+}
+
+@media (min-width: 960px) {
+  .grid-note {
+    -webkit-column-count:4;
+	  -moz-column-count:4;
+	  column-count:4;
+  }
+}

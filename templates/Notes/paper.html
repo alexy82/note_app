@@ -1,0 +1,21 @@
+
+          <div class="box box-success box-solid grid-item col-md-3" style="padding-left: 0;padding-right: 0">
+            <div class="box-header with-border">
+              <h3 class="box-title">{{ note.created_at|date:'H:i d/m/Y' }}</h3>
+
+              <div class="box-tools pull-right">
+                <button  type="button" name="remove" value="{{ note.id }}" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+                    <div contenteditable="true" class="box-body" name="{{ note.id }}">
+                    {{ note.content | safe }}
+                    </div>
+              <input type="hidden" id="content{{ note.id }}" name="content{{ note.id }}">
+
+            <!-- /.box-body -->
+          </div>
+
+          <!-- /.box -->
+

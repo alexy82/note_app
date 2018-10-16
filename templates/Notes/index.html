@@ -1,0 +1,69 @@
+{% extends 'base_view.html' %}
+{% load staticfiles %}
+ {% block head_tag %}
+      <link rel="stylesheet" href="{% static  'css/paper.css'%}">
+
+ {% endblock %}
+{% block count_notes %} {{ list_notes|length }} {% endblock %}
+{% block content %}
+<a href="{% url 'notes:note_create' %}" class="btn btn-app" style="margin-left: 0">
+                <i class="fa fa-plus"></i> Add new
+</a>
+<div class="grid-note">
+{% for note in list_notes %}
+    {% include 'notes/paper.html' with note=note %}
+   {% endfor %}
+</div>
+
+
+
+<script>
+
+</script>
+
+
+
+{% endblock %}
+{% block script %}
+
+   var origin_text = '';
+$("button[name*='remove']").click(function () {
+
+      $.ajax({
+        url:'/'+$(this).val()+'/delete',
+
+        dataType: 'json',
+        success: function (data) {
+
+        }
+      });
+
+    });
+
+$("div.box-body").focusin(function () {
+
+     origin_text = $(this).html()
+
+    });
+$("div.box-body").focusout(function () {
+
+     if (origin_text != $(this).html()){
+            $.ajax({
+            url:'/'+$(this).attr("name")+'/update',
+            type:'POST',
+          data:
+              {'csrfmiddlewaretoken' : "{{  csrf_token  }}",
+            'content':$(this).html()
+          },
+
+
+        dataType: 'json',
+        success: function (data) {
+
+        }
+      });
+     }
+
+    });
+
+{% endblock %}
